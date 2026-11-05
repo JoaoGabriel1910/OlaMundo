@@ -1,307 +1,524 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Gabriel Zanotti | Perfil Oficial</title>
-    <!-- Tailwind CSS -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meu primeiro site</title>
+</head>
+<body>
+        <!DOCTYPE html>
+    <html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Gabriel Zanotti | Cyber Profile</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Plus Jakarta Sans & Orbitron -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        tech: ['Orbitron', 'sans-serif'],
-                    },
                     colors: {
-                        brand: {
-                            gold: '#FFD700',
-                            cyan: '#00F2FE',
-                            blue: '#4FACFE',
-                            dark: '#0B0F19',
-                            card: 'rgba(17, 24, 39, 0.75)',
-                            weg: '#0057B8'
+                        cyber: {
+                            black: '#0a0d12',
+                            card: '#121824',
+                            border: '#1f293d',
+                            accent: '#00f0ff',
+                            weg: '#0057b8',
+                            santos: '#f4f4f5'
                         }
                     },
-                    animation: {
-                        'gradient-x': 'gradient-x 8s ease infinite',
-                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        'gradient-x': {
-                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
-                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: '0.4', filter: 'blur(20px)' },
-                            '50%': { opacity: '0.8', filter: 'blur(30px)' },
-                        },
-                        'float': {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                    fontFamily: {
+                        tech: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-
+    
     <style>
-        /* CSS Personalizado & Glassmorphism Épico */
         body {
-            background-color: #05070D;
-            color: #E2E8F0;
+            background-color: #080b10;
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
         }
 
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        /* Gradient background grid */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
 
-        .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* Custom Neon Glows */
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+        }
+        .glow-cyan:hover {
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: rgba(0, 242, 254, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.3);
+        .glow-santos {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        .glow-santos:hover {
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #FFFFFF 0%, #00F2FE 50%, #4FACFE 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Perspective for 3D Card tilt */
+        .card-perspective {
+            perspective: 1000px;
         }
 
-        .text-gradient-gold {
-            background: linear-gradient(135deg, #FFF5C0 0%, #FFD700 50%, #FF8C00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .card-inner {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
         }
 
-        .animated-border {
-            position: relative;
-            border-radius: 1.5rem;
-            background: linear-gradient(60deg, #00f2fe, #4facfe, #0057b8, #ffd700);
-            background-size: 300% 300%;
-            animation: gradient-x 4s ease infinite;
-            padding: 1px;
+        .card-perspective:hover .card-inner {
+            transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
         }
 
-        .santos-badge {
-            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(20,20,20,0.9) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        /* Pulse Animations */
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s infinite ease-in-out;
         }
 
-        /* Ambient Glow Effects */
-        .glow-sphere-1 {
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, rgba(0,0,0,0) 70%);
-            top: -100px;
-            left: -100px;
-            z-index: 0;
+        /* Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-
-        .glow-sphere-2 {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 87, 184, 0.3) 0%, rgba(0,0,0,0) 70%);
-            bottom: -150px;
-            right: -100px;
-            z-index: 0;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #05070D;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1E293B;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00F2FE;
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 md:p-8 font-sans relative">
+<body class="bg-grid min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
 
-    <!-- Background Ambient Glows -->
-    <div class="glow-sphere-1 animate-pulse-glow"></div>
-    <div class="glow-sphere-2 animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+    <!-- Canvas para Efeito Digital de Partículas -->
+    <canvas id="cyberCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
-    <!-- Main Container Outer Frame -->
-    <main class="w-full max-w-4xl relative z-10 animated-border my-auto">
-        
-        <!-- Main Glass Panel Container -->
-        <div class="glass-panel rounded-[1.45rem] p-6 sm:p-10 md:p-12 overflow-hidden relative">
+    <!-- Header / Navbar -->
+    <header class="relative z-10 w-full backdrop-blur-md bg-black/60 border-b border-gray-800 sticky top-0">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-tech font-bold text-black text-xl shadow-lg shadow-cyan-500/30">
+                    JZ
+                </div>
+                <span class="font-tech text-lg font-bold tracking-wider text-white">JOÃO GABRIEL <span class="text-cyan-400">ZANOTTI</span></span>
+            </div>
+            
+            <div class="flex items-center gap-2 bg-gray-900/80 border border-gray-700/60 rounded-full px-3 py-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-xs font-tech text-gray-300">17 ANOS • JARAGUÁ DO SUL</span>
+            </div>
+        </div>
+    </header>
 
-            <!-- Background Grid Pattern -->
-            <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+    <!-- Conteúdo Principal -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 py-8 flex-grow flex flex-col gap-10">
 
-            <!-- Header / Hero Section -->
-            <header class="text-center relative mb-10">
+        <!-- HERO SECTION -->
+        <section class="relative rounded-3xl bg-gradient-to-br from-gray-900/90 via-black to-slate-900/90 border border-gray-800 p-6 md:p-10 overflow-hidden shadow-2xl">
+            <!-- Background Accent Blurs -->
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
                 
-                <!-- Avatar Circle with Neon Aura -->
-                <div class="relative w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-6">
-                    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-600 to-yellow-400 animate-spin opacity-75 blur-md" style="animation-duration: 8s;"></div>
-                    <div class="relative w-full h-full rounded-full bg-slate-950 border-2 border-white/20 flex items-center justify-center overflow-hidden shadow-2xl">
-                        <span class="font-tech text-3xl sm:text-4xl font-extrabold text-gradient">JGZ</span>
+                <!-- Avatar / Badge Central -->
+                <div class="lg:col-span-5 flex flex-col items-center text-center">
+                    <div class="relative group cursor-pointer" onclick="triggerCyberSound()">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-white to-blue-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+                        
+                        <div class="relative w-48 h-48 md:w-56 md:h-56 bg-gray-950 rounded-2xl p-3 flex flex-col items-center justify-center border border-gray-800 text-center">
+                            <i class="fa-solid fa-user-gear text-6xl text-cyan-400 mb-3 group-hover:scale-110 transition duration-300"></i>
+                            <h2 class="font-tech text-xl font-bold text-white tracking-wide">JOÃO ZANOTTI</h2>
+                            <p class="text-xs text-gray-400 font-mono mt-1">&lt; Cybersistemas &gt;</p>
+                            
+                            <div class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-300 text-xs font-semibold">
+                                <i class="fa-solid fa-bolt text-yellow-400"></i> Dev em Formação WEG
+                            </div>
+                        </div>
                     </div>
-                    <!-- Status Indicator Badge -->
-                    <div class="absolute bottom-1 right-1 w-6 h-6 bg-emerald-500 border-2 border-slate-950 rounded-full flex items-center justify-center" title="Ativo / Cursando WEG">
-                        <i class="fa-solid fa-bolt text-[10px] text-slate-950"></i>
+                    <p class="text-xs text-gray-400 mt-3 italic"><i class="fa-solid fa-hand-pointer text-cyan-400"></i> Passe o mouse nos cards abaixo para interagir!</p>
+                </div>
+
+                <!-- Resumo & Highlights -->
+                <div class="lg:col-span-7 flex flex-col gap-4 text-left">
+                    <div class="inline-block self-start px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-cyan-400 uppercase tracking-widest">
+                        Perfil Pessoal & Interesses
                     </div>
-                </div>
-
-                <!-- Name Title -->
-                <h1 class="font-tech text-3xl sm:text-5xl md:text-6xl font-black tracking-wider uppercase mb-3 text-gradient">
-                    João Gabriel Zanotti
-                </h1>
-
-                <!-- Subtitle Location & Age -->
-                <div class="flex flex-wrap items-center justify-center gap-3 text-sm sm:text-base font-medium text-slate-400 mb-6">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/60 border border-slate-700/50">
-                        <i class="fa-regular fa-calendar text-cyan-400"></i> 17 Anos
-                    </span>
-                    <span class="text-slate-600">•</span>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/60 border border-slate-700/50">
-                        <i class="fa-solid fa-location-dot text-cyan-400"></i> Jaraguá do Sul - SC
-                    </span>
-                </div>
-
-                <!-- Highlight Pill Badge -->
-                <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full santos-badge hover:scale-105 transition-transform duration-300">
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
-                    </span>
-                    <span class="font-tech text-xs sm:text-sm font-semibold tracking-wider text-slate-100 flex items-center gap-2">
-                        <i class="fa-solid fa-crown text-amber-400"></i> Santista Fanático
-                        <span class="text-slate-500">|</span>
-                        <i class="fa-solid fa-microchip text-blue-400"></i> Aluno da WEG
-                    </span>
-                </div>
-            </header>
-
-            <hr class="border-slate-800/80 mb-10">
-
-            <!-- Biography Section -->
-            <section class="mb-12">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-1.5 h-6 bg-gradient-to-b from-cyan-400 to-blue-600 rounded-full"></div>
-                    <h2 class="font-tech text-lg sm:text-xl font-bold tracking-wide uppercase text-slate-200">
-                        Trajetória & Essência
-                    </h2>
-                </div>
-                <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 text-slate-300 leading-relaxed text-sm sm:text-base text-justify sm:text-left space-y-4">
-                    <p>
-                        Seja bem-vindo ao meu perfil oficial. Meu nome é <strong class="text-slate-100 font-semibold">João Gabriel Zanotti</strong>, tenho 17 anos e sou residente de Jaraguá do Sul - SC. Atualmente, construo minha jornada técnica no prestigiado curso de <strong class="text-cyan-300">Cybersistemas para Automação na WEG</strong>, imerso nas tecnologias que moldam a indústria moderna e o futuro da automação.
-                    </p>
-                    <p class="text-slate-400">
-                        Fora do universo tecnológico, busco o equilíbrio em experiências autênticas: no compasso de uma boa música, na energia do futebol com os amigos, na paixão incondicional de ser um <strong class="text-slate-100">Santista fanático</strong>, na liberdade de pilotar minha moto pelas ruas da cidade e na imersão dos videogames e séries.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Interactive Pillars / Hobbies & Focus Grid -->
-            <section>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1.5 h-6 bg-gradient-to-b from-blue-600 to-amber-400 rounded-full"></div>
-                    <h2 class="font-tech text-lg sm:text-xl font-bold tracking-wide uppercase text-slate-200">
-                        Pilares & Interesses
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     
-                    <!-- Card 1: Automação WEG -->
-                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:bg-blue-600 group-hover:text-white transition-all">
-                            <i class="fa-solid fa-robot"></i>
+                    <h1 class="font-tech text-3xl md:text-5xl font-extrabold text-white leading-tight">
+                        Acelerando na Automação, <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Sempre no Corre!</span>
+                    </h1>
+
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed">
+                        Fala aí! Sou o <strong class="text-white">João Gabriel Zanotti</strong>, tenho 17 anos e moro na movimentada cidade de <strong class="text-cyan-400">Jaraguá do Sul-SC</strong>. 
+                        No corre do dia a dia, estudo na <strong class="text-blue-400">WEG</strong> e fora das telas gosto de curtir a vida no máximo volume, jogar uma bola e rodar pela cidade!
+                    </p>
+
+                    <!-- Badges Destaque: WEG e SANTOS -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                        <!-- WEG CARD -->
+                        <div class="bg-blue-950/40 border border-blue-500/30 rounded-xl p-3.5 flex items-center gap-3.5 hover:border-blue-400 transition-all cursor-default">
+                            <div class="w-12 h-12 bg-blue-600/20 border border-blue-500/40 rounded-lg flex items-center justify-center text-blue-400 text-2xl flex-shrink-0">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-tech text-sm font-bold text-white uppercase">Curso Técnico WEG</h3>
+                                <p class="text-xs text-blue-200">Cybersistemas para Automação</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-slate-100 text-base mb-1">Cybersistemas</h3>
-                            <p class="text-xs text-slate-400">Automação Industrial & Formação WEG</p>
+
+                        <!-- SANTOS CARD -->
+                        <div class="bg-slate-900/80 border border-slate-600/40 rounded-xl p-3.5 flex items-center gap-3.5 hover:border-white transition-all cursor-default">
+                            <div class="w-12 h-12 bg-white/10 border border-white/30 rounded-lg flex items-center justify-center text-white text-2xl flex-shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-tech text-sm font-bold text-white uppercase">Santos FC</h3>
+                                <p class="text-xs text-gray-300">Santista Fanático! ⚪⚫</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Card 2: Santos FC -->
-                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: HOBBIES E INTERESSES (INTERATIVOS) -->
+        <section>
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-2">
+                <div>
+                    <h2 class="font-tech text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-gamepad text-cyan-400"></i> O QUE MOVE O ZANOTTI
+                    </h2>
+                    <p class="text-gray-400 text-sm">Passe o mouse ou toque nos cards para descobrir o lado divertido de cada um!</p>
+                </div>
+                <div class="text-xs font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-800 px-3 py-1 rounded-md self-start">
+                    [ INTERACTIVE_CARDS = ACTIVE ]
+                </div>
+            </div>
+
+            <!-- GRID DOS CARDS DE INTERESSE -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- 1. MÚSICA -->
+                <div class="card-perspective group" onmouseenter="playCardEffect(this)">
+                    <div class="card-inner bg-cyber-card border border-cyber-border rounded-2xl p-5 h-full flex flex-col justify-between hover:border-cyan-400 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-xl group-hover:bg-cyan-500/20 transition-all"></div>
                         <div>
-                            <h3 class="font-bold text-slate-100 text-base mb-1">Santos FC</h3>
-                            <p class="text-xs text-slate-400">Paixão, Tradição & Orgulho Santista</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-headphones"></i>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">01</span>
+                            </div>
+                            <h3 class="font-tech text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Escutar Música</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Fone no talo e grave batendo forte na mente.</p>
+                        </div>
+                        
+                        <!-- Tooltip / Revelação no Hover -->
+                        <div class="mt-4 pt-3 border-t border-gray-800 bg-black/40 -mx-5 -mb-5 p-4 transform translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            <p class="text-xs text-cyan-300 font-mono flex items-center gap-1.5">
+                                <i class="fa-solid fa-quote-left text-cyan-500"></i>
+                                <span>"A playlist de um santista no corre da WEG não para nunca!"</span>
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card 3: Lifestyle Moto -->
-                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all">
-                            <i class="fa-solid fa-motorcycle"></i>
-                        </div>
+                <!-- 2. FUTEBOL & SANTOS -->
+                <div class="card-perspective group" onmouseenter="playCardEffect(this)">
+                    <div class="card-inner bg-cyber-card border border-cyber-border rounded-2xl p-5 h-full flex flex-col justify-between hover:border-white transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-xl group-hover:bg-white/20 transition-all"></div>
                         <div>
-                            <h3 class="font-bold text-slate-100 text-base mb-1">Rota & Liberdade</h3>
-                            <p class="text-xs text-slate-400">Passeios de Moto por Jaraguá do Sul</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/30 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-futbol"></i>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">02</span>
+                            </div>
+                            <h3 class="font-tech text-lg font-bold text-white mb-2 group-hover:text-gray-200 transition-colors">Jogar Bola & Santos FC</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Dentro de campo raça total, na torcida é amor incondicional ao Peixe.</p>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-t border-gray-800 bg-black/40 -mx-5 -mb-5 p-4 transform translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            <p class="text-xs text-gray-200 font-mono flex items-center gap-1.5">
+                                <i class="fa-solid fa-crown text-yellow-400"></i>
+                                <span>"Nascer, viver e no Santos morrer! Aqui é Vila Belmiro na veia!"</span>
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card 4: Gaming & Entertenimento -->
-                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl group-hover:bg-purple-500 group-hover:text-white transition-all">
-                            <i class="fa-solid fa-gamepad"></i>
-                        </div>
+                <!-- 3. MOTINHO -->
+                <div class="card-perspective group" onmouseenter="playCardEffect(this)">
+                    <div class="card-inner bg-cyber-card border border-cyber-border rounded-2xl p-5 h-full flex flex-col justify-between hover:border-yellow-400 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-500/5 rounded-full blur-xl group-hover:bg-yellow-500/20 transition-all"></div>
                         <div>
-                            <h3 class="font-bold text-slate-100 text-base mb-1">Games & Filmes</h3>
-                            <p class="text-xs text-slate-400">Videogames, Séries & Imersão</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-2xl group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-motorcycle"></i>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">03</span>
+                            </div>
+                            <h3 class="font-tech text-lg font-bold text-white mb-2 group-hover:text-yellow-300 transition-colors">Andar de Motinho</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Rolezão suave por Jaraguá do Sul sentindo o vento no rosto.</p>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-t border-gray-800 bg-black/40 -mx-5 -mb-5 p-4 transform translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            <p class="text-xs text-yellow-300 font-mono flex items-center gap-1.5">
+                                <i class="fa-solid fa-gauge-high text-yellow-400"></i>
+                                <span>"Respeita a velocidade, mas o estilo na pista é garantido!"</span>
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card 5: Música -->
-                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all">
-                            <i class="fa-solid fa-headphones"></i>
-                        </div>
+                <!-- 4. AMIGOS -->
+                <div class="card-perspective group" onmouseenter="playCardEffect(this)">
+                    <div class="card-inner bg-cyber-card border border-cyber-border rounded-2xl p-5 h-full flex flex-col justify-between hover:border-emerald-400 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-all"></div>
                         <div>
-                            <h3 class="font-bold text-slate-100 text-base mb-1">Música</h3>
-                            <p class="text-xs text-slate-400">Trilha Sonora Diária & Rhythms</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">04</span>
+                            </div>
+                            <h3 class="font-tech text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">Estar com os Amigos</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Resenha, risadas e a parceria de sempre na cidade.</p>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-t border-gray-800 bg-black/40 -mx-5 -mb-5 p-4 transform translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            <p class="text-xs text-emerald-300 font-mono flex items-center gap-1.5">
+                                <i class="fa-solid fa-comments text-emerald-400"></i>
+                                <span>"Qualquer lugar vira parada obrigatória quando a tropa tá junta!"</span>
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card 6: Esporte & Social -->
-                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 text-xl group-hover:bg-rose-500 group-hover:text-white transition-all">
-                            <i class="fa-solid fa-futbol"></i>
-                        </div>
+                <!-- 5. VIDEOGAME -->
+                <div class="card-perspective group" onmouseenter="playCardEffect(this)">
+                    <div class="card-inner bg-cyber-card border border-cyber-border rounded-2xl p-5 h-full flex flex-col justify-between hover:border-purple-400 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl group-hover:bg-purple-500/20 transition-all"></div>
                         <div>
-                            <h3 class="font-bold text-slate-100 text-base mb-1">Futebol & Amigos</h3>
-                            <p class="text-xs text-slate-400">Jogar Bola & Conexões Reais</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-gamepad"></i>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">05</span>
+                            </div>
+                            <h3 class="font-tech text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Jogar Videogame</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Gameplays intensas, futebol digital e partidas competitivas.</p>
                         </div>
-                    </div>  
+                        
+                        <div class="mt-4 pt-3 border-t border-gray-800 bg-black/40 -mx-5 -mb-5 p-4 transform translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            <p class="text-xs text-purple-300 font-mono flex items-center gap-1.5">
+                                <i class="fa-solid fa-trophy text-purple-400"></i>
+                                <span>"Sem perdoar no FIFA/EA FC, meu time ganha até dormindo!"</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. FILMES / SÉRIES / EXERCÍCIOS -->
+                <div class="card-perspective group" onmouseenter="playCardEffect(this)">
+                    <div class="card-inner bg-cyber-card border border-cyber-border rounded-2xl p-5 h-full flex flex-col justify-between hover:border-red-400 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-xl group-hover:bg-red-500/20 transition-all"></div>
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-2xl group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-dumbbell"></i>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">06</span>
+                            </div>
+                            <h3 class="font-tech text-lg font-bold text-white mb-2 group-hover:text-red-300 transition-colors">Atividades & Entretenimento</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">Treinos para manter a forma e séries/filmes no descanso.</p>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-t border-gray-800 bg-black/40 -mx-5 -mb-5 p-4 transform translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            <p class="text-xs text-red-300 font-mono flex items-center gap-1.5">
+                                <i class="fa-solid fa-fire text-red-400"></i>
+                                <span>"Mente afiada na tecnologia, corpo em movimento na vida real!"</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO INTERATIVA: ZANOTTI'S SOUND & STATS BOARD -->
+        <section class="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 border border-gray-800 rounded-3xl p-6 md:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                
+                <div class="p-4 bg-black/50 border border-gray-800 rounded-2xl flex flex-col items-center justify-center">
+                    <i class="fa-solid fa-bolt-lightning text-cyan-400 text-3xl mb-2"></i>
+                    <span class="font-tech text-3xl font-extrabold text-white">100%</span>
+                    <span class="text-xs font-mono text-gray-400 uppercase tracking-widest mt-1">Foco na Automação WEG</span>
+                </div>
+
+                <div class="p-4 bg-black/50 border border-gray-800 rounded-2xl flex flex-col items-center justify-center">
+                    <i class="fa-solid fa-heart text-red-500 text-3xl mb-2"></i>
+                    <span class="font-tech text-3xl font-extrabold text-white">SANTISTA</span>
+                    <span class="text-xs font-mono text-gray-400 uppercase tracking-widest mt-1">Desde Berço</span>
+                </div>
+
+                <div class="p-4 bg-black/50 border border-gray-800 rounded-2xl flex flex-col items-center justify-center">
+                    <i class="fa-solid fa-location-dot text-emerald-400 text-3xl mb-2"></i>
+                    <span class="font-tech text-3xl font-extrabold text-white">JARAGUÁ DO SUL</span>
+                    <span class="text-xs font-mono text-gray-400 uppercase tracking-widest mt-1">Santa Catarina</span>
+                </div>
+
+            </div>
+
+            <!-- Botão Divertido de Interação -->
+            <div class="mt-8 flex flex-col items-center">
+                <button onclick="gerarFraseDivertida()" class="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-tech font-extrabold px-8 py-3.5 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-cyan-500/25">
+                    <i class="fa-solid fa-dice text-lg"></i>
+                    <span>GERAR FRASE ALEATÓRIA DO ZANOTTI</span>
+                </button>
+                
+                <div id="fraseBox" class="mt-4 p-4 bg-black/80 border border-cyan-500/40 rounded-xl max-w-xl text-center hidden">
+                    <p id="fraseTexto" class="text-sm md:text-base font-mono text-cyan-300 italic"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-gray-800 bg-black/80 py-6 text-center text-xs text-gray-500 font-mono">
+        <p>© João Gabriel Zanotti • 17 Anos • Cybersistemas para Automação WEG</p>
+        <p class="mt-1 text-gray-600">Jaraguá do Sul - SC | Orgulho Alvinegro ⚪⚫</p>
+    </footer>
+
+    <!-- JS INTERATIVO E ANIMAÇÃO CANVAS -->
+    <script>
+        // Array de frases aleatórias sobre o João Gabriel Zanotti
+        const frasesDivertidas = [
+            "⚡ Se a automação falhar, a gente resolve no código e depois vai dar uma volta de moto!",
+            "⚪⚫ Torcer pro Santos não é opção, é estilo de vida!",
+            "🎧 Música tocando no fone, código na tela e o cérebro rodando a 1000 RPM.",
+            "⚽ No futebol com os amigos o passe é rápido e a resenha é garantida!",
+            "🛵 Rodando por Jaraguá do Sul pra esfriar a cabeça depois de uma aula intensa na WEG.",
+            "🎮 No videogame não tem empate: é vitória ou revanche imediata!",
+            "💡 Cybersistemas pra automação: construindo o futuro industrial direto do Senai/WEG!"
+        ];
+
+        function gerarFraseDivertida() {
+            const box = document.getElementById('fraseBox');
+            const texto = document.getElementById('fraseTexto');
+            const random = Math.floor(Math.random() * frasesDivertidas.length);
+            
+            texto.textContent = `"${frasesDivertidas[random]}"`;
+            box.classList.remove('hidden');
+            
+            // Pequeno efeito visual
+            box.classList.add('animate-bounce');
+            setTimeout(() => {
+                box.classList.remove('animate-bounce');
+            }, 600);
+        }
+
+        function triggerCyberSound() {
+            // Efeito visual sutil ao clicar no perfil
+            const avatar = event.currentTarget;
+            avatar.classList.add('scale-95');
+            setTimeout(() => avatar.classList.remove('scale-95'), 150);
+        }
+
+        function playCardEffect(card) {
+            // Pequeno feedback de interação no hover
+        }
+
+        // --- BACKGROUND CANVAS (EFEITO MATRIX/CYBER) ---
+        const canvas = document.getElementById('cyberCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = 45;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.8 + 0.5,
+                color: Math.random() > 0.5 ? '#00f0ff' : '#0057b8',
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+
+                // Conectar partículas próximas
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${1 - dist / 100})`;
+                        ctx.lineWidth = 0.3;
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.onload = function() {
+            animateCanvas();
+        };
+    </script>
+</body>
+</html>
+
+</body>
+</html>
+</body>
+</html>
