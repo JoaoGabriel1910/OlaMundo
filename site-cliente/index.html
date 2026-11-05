@@ -1,81 +1,307 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Meu primeiro site</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil - João Gabriel Zanotti</title>
+    <title>João Gabriel Zanotti | Perfil Oficial</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            gold: '#FFD700',
+                            cyan: '#00F2FE',
+                            blue: '#4FACFE',
+                            dark: '#0B0F19',
+                            card: 'rgba(17, 24, 39, 0.75)',
+                            weg: '#0057B8'
+                        }
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 8s ease infinite',
+                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.4', filter: 'blur(20px)' },
+                            '50%': { opacity: '0.8', filter: 'blur(30px)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
+        /* CSS Personalizado & Glassmorphism Épico */
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background-color: #05070D;
+            color: #E2E8F0;
+            overflow-x: hidden;
         }
-        .card {
-            background-color: #111111;
-            border: 3px solid #ffffff;
-            border-radius: 12px;
-            padding: 30px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
-            text-align: center;
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
-        h1 {
-            color: #ffffff;
-            margin-bottom: 5px;
-            border-bottom: 2px solid #ffffff;
-            padding-bottom: 15px;
-            font-size: 2em;
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .subtitle {
-            font-size: 1.1em;
-            color: #b0b0b0;
-            margin-bottom: 20px;
+
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.3);
         }
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #e0e0e0;
-            text-align: justify;
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #00F2FE 50%, #4FACFE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .badge {
-            display: inline-block;
-            background-color: #ffffff;
-            color: #000000;
-            font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 20px;
-            margin-top: 20px;
+
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFF5C0 0%, #FFD700 50%, #FF8C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .animated-border {
+            position: relative;
+            border-radius: 1.5rem;
+            background: linear-gradient(60deg, #00f2fe, #4facfe, #0057b8, #ffd700);
+            background-size: 300% 300%;
+            animation: gradient-x 4s ease infinite;
+            padding: 1px;
+        }
+
+        .santos-badge {
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(20,20,20,0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ambient Glow Effects */
+        .glow-sphere-1 {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+        }
+
+        .glow-sphere-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 87, 184, 0.3) 0%, rgba(0,0,0,0) 70%);
+            bottom: -150px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070D;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F2FE;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-8 font-sans relative">
 
-    <div class="card">
-        <h1>João Gabriel Zanotti</h1>
-        <div class="subtitle">17 anos • Jaraguá do Sul - SC</div>
-        <p>
-            Olá! Me chamo João Gabriel Zanotti, tenho 17 anos, sou morador de Jaraguá do Sul e atualmente estou cursando o curso técnico de Cybersistemas para Automação na WEG. Eu gosto de escutar música, jogar bola, estar com meus amigos, assistir, jogar videogame, fazer atividades, andar pela cidade de motinho e ser um santista fanático.
-        </p>
-        <div class="badge">⚪⚫ Santista Fanático & Aluno da WEG ⚫⚪</div>
-    </div>
+    <!-- Background Ambient Glows -->
+    <div class="glow-sphere-1 animate-pulse-glow"></div>
+    <div class="glow-sphere-2 animate-pulse-glow" style="animation-delay: 1.5s;"></div>
 
-</body>
-</html>
-</body>
-</html>
+    <!-- Main Container Outer Frame -->
+    <main class="w-full max-w-4xl relative z-10 animated-border my-auto">
+        
+        <!-- Main Glass Panel Container -->
+        <div class="glass-panel rounded-[1.45rem] p-6 sm:p-10 md:p-12 overflow-hidden relative">
+
+            <!-- Background Grid Pattern -->
+            <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+            <!-- Header / Hero Section -->
+            <header class="text-center relative mb-10">
+                
+                <!-- Avatar Circle with Neon Aura -->
+                <div class="relative w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-6">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-600 to-yellow-400 animate-spin opacity-75 blur-md" style="animation-duration: 8s;"></div>
+                    <div class="relative w-full h-full rounded-full bg-slate-950 border-2 border-white/20 flex items-center justify-center overflow-hidden shadow-2xl">
+                        <span class="font-tech text-3xl sm:text-4xl font-extrabold text-gradient">JGZ</span>
+                    </div>
+                    <!-- Status Indicator Badge -->
+                    <div class="absolute bottom-1 right-1 w-6 h-6 bg-emerald-500 border-2 border-slate-950 rounded-full flex items-center justify-center" title="Ativo / Cursando WEG">
+                        <i class="fa-solid fa-bolt text-[10px] text-slate-950"></i>
+                    </div>
+                </div>
+
+                <!-- Name Title -->
+                <h1 class="font-tech text-3xl sm:text-5xl md:text-6xl font-black tracking-wider uppercase mb-3 text-gradient">
+                    João Gabriel Zanotti
+                </h1>
+
+                <!-- Subtitle Location & Age -->
+                <div class="flex flex-wrap items-center justify-center gap-3 text-sm sm:text-base font-medium text-slate-400 mb-6">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/60 border border-slate-700/50">
+                        <i class="fa-regular fa-calendar text-cyan-400"></i> 17 Anos
+                    </span>
+                    <span class="text-slate-600">•</span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/60 border border-slate-700/50">
+                        <i class="fa-solid fa-location-dot text-cyan-400"></i> Jaraguá do Sul - SC
+                    </span>
+                </div>
+
+                <!-- Highlight Pill Badge -->
+                <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full santos-badge hover:scale-105 transition-transform duration-300">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+                    </span>
+                    <span class="font-tech text-xs sm:text-sm font-semibold tracking-wider text-slate-100 flex items-center gap-2">
+                        <i class="fa-solid fa-crown text-amber-400"></i> Santista Fanático
+                        <span class="text-slate-500">|</span>
+                        <i class="fa-solid fa-microchip text-blue-400"></i> Aluno da WEG
+                    </span>
+                </div>
+            </header>
+
+            <hr class="border-slate-800/80 mb-10">
+
+            <!-- Biography Section -->
+            <section class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-1.5 h-6 bg-gradient-to-b from-cyan-400 to-blue-600 rounded-full"></div>
+                    <h2 class="font-tech text-lg sm:text-xl font-bold tracking-wide uppercase text-slate-200">
+                        Trajetória & Essência
+                    </h2>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 text-slate-300 leading-relaxed text-sm sm:text-base text-justify sm:text-left space-y-4">
+                    <p>
+                        Seja bem-vindo ao meu perfil oficial. Meu nome é <strong class="text-slate-100 font-semibold">João Gabriel Zanotti</strong>, tenho 17 anos e sou residente de Jaraguá do Sul - SC. Atualmente, construo minha jornada técnica no prestigiado curso de <strong class="text-cyan-300">Cybersistemas para Automação na WEG</strong>, imerso nas tecnologias que moldam a indústria moderna e o futuro da automação.
+                    </p>
+                    <p class="text-slate-400">
+                        Fora do universo tecnológico, busco o equilíbrio em experiências autênticas: no compasso de uma boa música, na energia do futebol com os amigos, na paixão incondicional de ser um <strong class="text-slate-100">Santista fanático</strong>, na liberdade de pilotar minha moto pelas ruas da cidade e na imersão dos videogames e séries.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Interactive Pillars / Hobbies & Focus Grid -->
+            <section>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1.5 h-6 bg-gradient-to-b from-blue-600 to-amber-400 rounded-full"></div>
+                    <h2 class="font-tech text-lg sm:text-xl font-bold tracking-wide uppercase text-slate-200">
+                        Pilares & Interesses
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    
+                    <!-- Card 1: Automação WEG -->
+                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-100 text-base mb-1">Cybersistemas</h3>
+                            <p class="text-xs text-slate-400">Automação Industrial & Formação WEG</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Santos FC -->
+                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-100 text-base mb-1">Santos FC</h3>
+                            <p class="text-xs text-slate-400">Paixão, Tradição & Orgulho Santista</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Lifestyle Moto -->
+                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-100 text-base mb-1">Rota & Liberdade</h3>
+                            <p class="text-xs text-slate-400">Passeios de Moto por Jaraguá do Sul</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Gaming & Entertenimento -->
+                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl group-hover:bg-purple-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-100 text-base mb-1">Games & Filmes</h3>
+                            <p class="text-xs text-slate-400">Videogames, Séries & Imersão</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Música -->
+                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all">
+                            <i class="fa-solid fa-headphones"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-100 text-base mb-1">Música</h3>
+                            <p class="text-xs text-slate-400">Trilha Sonora Diária & Rhythms</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Esporte & Social -->
+                    <div class="glass-card p-5 rounded-2xl flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 text-xl group-hover:bg-rose-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-futbol"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-100 text-base mb-1">Futebol & Amigos</h3>
+                            <p class="text-xs text-slate-400">Jogar Bola & Conexões Reais</p>
+                        </div>
+                    </div>
